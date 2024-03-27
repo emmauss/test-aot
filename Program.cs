@@ -6,7 +6,7 @@ internal class Program
     static Func<TimeSpan, bool>? Validate { get; set; }
     private static void Main(string[] args)
     {
-        // trying to reproduce a different bug encountered on arm but not on arm64 or win_x64, but bug doesn't occur. occurs in live project
+        // trying to reproduce a different bug encountered on arm but not on arm64 or win_x64, but bug doesn't occur. occurs in live project. This may only occur in shared library mode
         var timespan = TimeSpan.Zero;
         Validate = IsValid;
         Console.WriteLine($"Timespan total ms should be 0, but it's {timespan.TotalMilliseconds}. Comparison timespan.TotalMilliseconds >= 0.0 is not {Validate?.Invoke(timespan) == false}");
